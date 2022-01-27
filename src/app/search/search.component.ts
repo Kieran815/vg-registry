@@ -18,7 +18,7 @@ export class SearchComponent implements OnInit {
   findGame(gameTitle: string) {
     console.log(`Searching For ${gameTitle}`);
     this.http
-      .get(`https://api.rawg.io/api/games?key=aa7e732482ae43419435e2e3e6a960a7&search=${gameTitle}`)
+      .get(`https://api.rawg.io/api/games?key=<API_KEY_HERE>&search=${gameTitle}`)
       .subscribe((response) => {
         this.titleSearchResults = response;
         console.log(this.titleSearchResults)
