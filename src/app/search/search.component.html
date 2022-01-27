@@ -1,0 +1,29 @@
+{{title}}
+
+<section>
+  <h2>Search Games</h2>
+  <input [(ngModel)]="gameTitleSearch" type="text" placeholder="Search Game Title"/>
+  <input (click)="findGame(gameTitleSearch)" type="submit" value="Search"/>
+  {{gameTitleSearch}}
+</section>
+
+<section  *ngIf="titleSearchResults != undefined">
+  <h3>{{titleSearchResults.count}}:</h3>
+    <mat-card *ngFor="let game of titleSearchResults.results; let i = index">
+      {{i}}: 
+      <mat-card-title-group>
+        <mat-card-title>{{game.name}}</mat-card-title>
+        <mat-card-subtitle *ngIf="game.esrb_rating != null">{{game.esrb_rating.name}}</mat-card-subtitle>
+        <mat-card-subtitle>{{game.genre}}</mat-card-subtitle>
+        <img mat-card-xl-image src={{game.short_screenshots[0].image}} >
+      </mat-card-title-group>
+      <mat-card-content>
+        <p>
+          <b>Genres: </b>
+          <span *ngFor="let genre of game.genres">
+            {{genre.name}}
+          </span>
+        </p>
+      </mat-card-content>
+    </mat-card>
+</section>

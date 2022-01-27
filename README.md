@@ -20,10 +20,11 @@ Helpful Links:<br />
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">International Video Game Registry</h3>
+<h2 align="center">International Video Game Registry</h2>
+<h3 align="center">Front End</h3>
 
   <p align="center">
-    project_description
+    International Video Game Registry - A Digital Library of Game Information for Players. Players can create an account, search search the RAWG data base api by title, view the game listing, and add it to their personal CRUD list of game titles.
     <br />
     <a href="https://github.com/Kieran815/vg-registry"><strong>Explore the docs »</strong></a>
     <br />
