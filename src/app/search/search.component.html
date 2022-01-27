@@ -13,16 +13,19 @@
       {{i}}: 
       <mat-card-title-group>
         <mat-card-title>{{game.name}}</mat-card-title>
-        <mat-card-subtitle *ngIf="game.esrb_rating != null">{{game.esrb_rating.name}}</mat-card-subtitle>
+        <mat-card-subtitle *ngIf="game.esrb_rating != undefined">{{game.esrb_rating.name}}</mat-card-subtitle>
         <mat-card-subtitle>{{game.genre}}</mat-card-subtitle>
-        <img mat-card-xl-image src={{game.short_screenshots[0].image}} >
-      </mat-card-title-group>
-      <mat-card-content>
-        <p>
+        <mat-card-subtitle *ngIf="game.genres.length > 0">
           <b>Genres: </b>
           <span *ngFor="let genre of game.genres">
             {{genre.name}}
           </span>
+        </mat-card-subtitle>
+        <img mat-card-xl-image src={{game.short_screenshots[0].image}} >
+      </mat-card-title-group>
+      <mat-card-content>
+        <p>
+          
         </p>
       </mat-card-content>
     </mat-card>
