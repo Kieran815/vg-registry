@@ -25,6 +25,14 @@ export class SearchComponent implements OnInit {
       });
   }
 
+  getGamesList() {
+    console.log("Connecting to IVGR DataBase...");
+    this.http.get("http://localhost:9092/api/lists")
+    .subscribe((response) => {
+      console.log(response);
+    })
+  }
+
   ngOnInit(): void {
   }
 

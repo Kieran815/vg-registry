@@ -1,6 +1,7 @@
 {{title}}
 
 <section>
+  <input (click)="getGamesList()" type="submit" value="Search"/>
   <h2>Search Games</h2>
   <input [(ngModel)]="gameTitleSearch" type="text" placeholder="Search Game Title"/>
   <input (click)="findGame(gameTitleSearch)" type="submit" value="Search"/>
@@ -8,7 +9,7 @@
 </section>
 
 <section  *ngIf="titleSearchResults != undefined">
-  <h3>{{titleSearchResults.count}}:</h3>
+  <h3>Found {{titleSearchResults.count}} Results:</h3>
     <mat-card *ngFor="let game of titleSearchResults.results; let i = index">
       {{i}}: 
       <mat-card-title-group>
