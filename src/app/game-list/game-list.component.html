@@ -1,8 +1,11 @@
 <p>Render User Games List Here</p>
 
+<!-- ***** NEW LIST BUTTON ***** -->
 <button mat-fab color="primary" (click)="openDialog()" aria-label="Example icon button with a delete icon">
   <mat-icon>add</mat-icon>
 </button>
+
+<!-- <app-list-creation-popup (newListEvent)="createList($event)"></app-list-creation-popup> -->
 
 <!-- ***** GAMES LISTS ACCORDION ***** -->
 <mat-accordion *ngIf="this.gameLists">
