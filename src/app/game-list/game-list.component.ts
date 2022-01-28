@@ -1,5 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 // ***** MATERIAL DESIGN IMPORTS *****
 import { MatDialog } from '@angular/material/dialog';
@@ -20,30 +20,35 @@ export class GameListComponent implements OnInit {
   // var to receive body from modal list creation
   createListBody: Object | undefined;
 
-  constructor(private http: HttpClient, public dialog: MatDialog) { }
-
+  // component variables
   gameLists: any | undefined;
   newListName: string | undefined;
   newListDescription: string | undefined;
   jsonResult: any;
 
+
+  constructor(private http: HttpClient, public dialog: MatDialog) { }
+
+
   // method for angular list creation pop-up
   openDialog() {
     const dialogRef = this.dialog.open(ListCreationPopupComponent);
     dialogRef.afterClosed().subscribe(result => {
-      this.newListName = result.data.name;
-      this.newListDescription = result.data.description;
+      result.data.name ? this.newListName = result.data.name : '';
+      result.data.description ? this.newListDescription = result.data.description : '';
+      console.log(result);
       let nameExists = false;
       if(this.newListName && this.newListDescription) {
         for(let i = 0; i < this.gameLists.length; i++) {
           if (this.gameLists[i].name === this.newListName) {
-            nameExists = true
-            alert(`List Not Saved. List name ${this.gameLists[i].name} already exists.`);
+            nameExists = true;
+            alert(`List Not Saved. List name "${this.gameLists[i].name}" already exists.`);
           }
         }
         nameExists === false ? this.createList(this.newListName, this.newListDescription) : '';
       } else {
-        alert("Missing Information. Please Review your Entry.")
+        alert("Missing Information. Please Review your Entry.");
+        this.openDialog();
       }
     })
   }
@@ -54,6 +59,7 @@ export class GameListComponent implements OnInit {
     this.http.get("http://localhost:9092/api/lists")
     .subscribe((response) => {
       this.gameLists = response;
+      console.log(this.gameLists);
     })
   }
 
@@ -67,10 +73,29 @@ export class GameListComponent implements OnInit {
       .toPromise()
       .then((data: any) => {
         console.log(data);
-        // console.log(JSON.stringify(data.json.name));
-        // this.jsonResult = JSON.stringify
+        this.getGameLists();
       })
-      this.getGameLists();
+  }
+
+  updateList(index: number, newName: string, newDescription: string) {
+
+  }
+
+  deleteList(index: number) {
+    let listId = this.gameLists[index].id;
+    let confirmDelete = confirm(`Are you sure you want to delete ${this.gameLists[index].name}?`);
+    if(confirmDelete) {
+      this.http
+        .delete(`http://localhost:9092/api/lists/${listId}`)
+        .toPromise()
+        .then((data: any) => {
+          console.log(data);
+          this.getGameLists();
+        });
+    } else {
+      return;
+    }
+    
   }
 
   ngOnInit(): void {
