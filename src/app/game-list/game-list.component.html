@@ -1,1 +1,53 @@
 <p>Render User Games List Here</p>
+
+<button mat-fab color="primary" (click)="openDialog()" aria-label="Example icon button with a delete icon">
+  <mat-icon>add</mat-icon>
+</button>
+
+<!-- ***** GAMES LISTS ACCORDION ***** -->
+<mat-accordion *ngIf="this.gameLists">
+
+  <mat-expansion-panel *ngFor="let list of this.gameLists" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{list.name}}
+      </mat-panel-title>
+      <mat-panel-description>
+        <!-- Currently I am {{panelOpenState ? 'open' : 'closed'}} -->
+        {{list.description}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>I'm visible because I am open</p>
+  </mat-expansion-panel>
+
+</mat-accordion>
+
+<!-- gameLists Accordion Basic Template -->
+
+<!-- <mat-accordion>
+  ***** BASIC PANEL *****
+  <mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        This is the expansion title
+      </mat-panel-title>
+      <mat-panel-description>
+        This is a summary of the content
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>This is the primary content of the panel.</p>
+  </mat-expansion-panel>
+
+  ***** SELF-AWARE PANEL *****
+  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Self aware panel
+      </mat-panel-title>
+      <mat-panel-description>
+        Currently I am {{panelOpenState ? 'open' : 'closed'}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>I'm visible because I am open</p>
+  </mat-expansion-panel>
+</mat-accordion> -->

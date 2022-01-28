@@ -1,7 +1,6 @@
 {{title}}
 
 <section>
-  <input (click)="getGamesList()" type="submit" value="Search"/>
   <h2>Search Games</h2>
   <input [(ngModel)]="gameTitleSearch" type="text" placeholder="Search Game Title"/>
   <input (click)="findGame(gameTitleSearch)" type="submit" value="Search"/>

@@ -1,3 +1,4 @@
+// ROOT APP IMPORTS
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
@@ -11,9 +12,13 @@ import { HttpClientModule } from '@angular/common/http';
 
 // MATERIAL-UI DEPENDENCIES
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatCardModule} from '@angular/material/card';
-import {MatInputModule} from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
 
 // COMPONENT IMPORTS
 import { AppComponent } from './app.component';
@@ -23,16 +28,19 @@ import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { LandingComponent } from './landing/landing.component';
 import { LoginComponent } from './login/login.component';
 import { GameListComponent } from './game-list/game-list.component';
+import { ListCreationPopupComponent } from './list-creation-popup/list-creation-popup.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    HeaderComponent,
     LoginComponent,
     LandingComponent,
     FourOhFourComponent,
     // SEARCH API
     SearchComponent,
-    HeaderComponent,
+    GameListComponent,
+    ListCreationPopupComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,7 +54,10 @@ import { GameListComponent } from './game-list/game-list.component';
     MatCardModule,
     MatInputModule,
     MatFormFieldModule,
-
+    MatExpansionModule,
+    MatButtonModule,
+    MatIconModule,
+    MatDialogModule,
 
     RouterModule.forRoot([
       {
@@ -62,7 +73,7 @@ import { GameListComponent } from './game-list/game-list.component';
         component: SearchComponent
       },
       {
-        path: 'my-list',
+        path: 'my-lists',
         component: GameListComponent
       },
       {
