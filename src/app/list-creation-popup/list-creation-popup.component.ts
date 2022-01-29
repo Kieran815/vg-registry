@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 
 @Component({
@@ -8,7 +9,6 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./list-creation-popup.component.css']
 })
 export class ListCreationPopupComponent implements OnInit {
-
   listName: string = '';
   listDescription: string = '';
 
@@ -22,7 +22,9 @@ export class ListCreationPopupComponent implements OnInit {
     this.dialogRef.close({ event: 'close', data: body });
   }
 
-  constructor(public dialogRef: MatDialogRef<ListCreationPopupComponent>) { }
+  constructor(
+    public dialogRef: MatDialogRef<ListCreationPopupComponent>
+  ) { }
 
   ngOnInit(): void {
   }

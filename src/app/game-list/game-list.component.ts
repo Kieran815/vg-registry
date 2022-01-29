@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 // ***** MATERIAL DESIGN IMPORTS *****
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
 // ***** COMPONENT IMPORT *****
 import { ListCreationPopupComponent } from '../list-creation-popup/list-creation-popup.component';
@@ -53,6 +53,18 @@ export class GameListComponent implements OnInit {
     })
   }
 
+  updateDialog(index: number) {
+    let listObject = this.gameLists[index];
+    console.log(listObject);
+    // const dialogConfig = new MatDialogConfig();
+
+    // dialogConfig.data = {
+    //   name: listObject.name,
+    //   description: listObject.description
+    // }
+    // this.dialog.open(ListCreationPopupComponent, dialogConfig)
+  }
+
   // ***** GET ALL LISTS *****
   getGameLists() {
     console.log("Connecting to IVGR DataBase...");
@@ -77,8 +89,19 @@ export class GameListComponent implements OnInit {
       })
   }
 
-  updateList(index: number, newName: string, newDescription: string) {
-
+  updateList(index: number) {
+    let listObject = this.gameLists[index];
+    console.log(listObject);
+    const dialogRef = this.dialog.open(ListCreationPopupComponent,
+      {
+        data: {
+          passedListObject: {
+            listName: `${this.gameLists[index].name}`,
+            listDescription: `${this.gameLists[index].description}`
+          }
+        }
+      }
+    );
   }
 
   deleteList(index: number) {
