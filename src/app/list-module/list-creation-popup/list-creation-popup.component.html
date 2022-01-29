@@ -1,0 +1,20 @@
+<mat-dialog-content id="create-list">
+  <mat-form-field hintLabel="Max 50 characters" appearance="fill">
+    <mat-label>List Name</mat-label>
+    <input matInput [(ngModel)]="listName" #name maxlength="50" placeholder="My List">
+    <mat-hint align="end">{{name.value?.length || 0}}/50</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field hintLabel="Max 200 characters" appearance="fill">
+    <mat-label>List Description</mat-label>
+    <input matInput [(ngModel)]="listDescription" #description maxlength="200" placeholder="Description of My List">
+    <mat-hint align="end">{{description.value?.length || 0}}/200</mat-hint>
+  </mat-form-field>
+</mat-dialog-content>
+
+<br/>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button (click)="createNewList(name.value, description.value)" [mat-dialog-close]="true" cdkFocusInitial>Create List</button>
+</mat-dialog-actions>
