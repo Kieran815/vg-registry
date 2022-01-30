@@ -15,8 +15,6 @@
 <mat-accordion *ngIf="this.gameLists">
   <mat-expansion-panel
     *ngFor="let list of this.gameLists; let i = index" 
-    (opened)="panelOpenState = true" 
-    (closed)="panelOpenState = false"
   >
     <mat-expansion-panel-header>
       <mat-panel-title>
@@ -30,14 +28,6 @@
 
     <section>
       <button 
-      mat-mini-fab color="accent"
-        (click)="updateList(i)"
-        aria-label="Example icon button with a 'delete' icon"
-      >
-        <mat-icon>update</mat-icon>
-      </button>
-
-      <button 
         mat-mini-fab color="warn"
         (click)="deleteList(i)" 
         aria-label="Example icon button with a 'delete' icon"
@@ -46,7 +36,9 @@
       </button>
     </section>
 
-    <p>I'm visible because I am open</p>
+    <!-- <section *ngIf="games">
+    </section> -->
+  
   </mat-expansion-panel>
 
 </mat-accordion>

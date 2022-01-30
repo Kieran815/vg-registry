@@ -27,8 +27,8 @@ import { HeaderComponent } from './header/header.component';
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { LandingComponent } from './landing/landing.component';
 import { LoginComponent } from './login/login.component';
-import { GameListComponent } from './game-list/game-list.component';
-import { ListCreationPopupComponent } from './list-creation-popup/list-creation-popup.component';
+import { GameListComponent } from './list-module/game-list/game-list.component';
+import { ListCreationComponent } from './list-module/list-creation/list-creation.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +40,7 @@ import { ListCreationPopupComponent } from './list-creation-popup/list-creation-
     // SEARCH API
     SearchComponent,
     GameListComponent,
-    ListCreationPopupComponent,
+    ListCreationComponent,
   ],
   imports: [
     BrowserModule,
