@@ -36,6 +36,12 @@ export class ListService {
   }
     
   deleteList(index: number) {
+    let gamesList; 
+    this.getGameLists().subscribe(data => {
+      // console.log(gamesList);
+      gamesList = data;
+    });
+    return gamesList;
     // let listId = this.gameLists[index];
     // console.log(listId);
     // let confirmDelete = confirm(`Are you sure you want to delete ${listId[index].listName}?`);
