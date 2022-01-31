@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { IGameList } from 'src/app/game-list';
+import { ListService } from 'src/app/services/list.service';
 
 
 @Component({
@@ -28,7 +29,7 @@ export class ListCreationComponent implements OnInit {
 
   }
 
-  constructor(public dialogRef: MatDialogRef<ListCreationComponent>) { }
+  constructor(public dialogRef: MatDialogRef<ListCreationComponent>, private listService: ListService) { }
 
   ngOnInit(): void {
   }

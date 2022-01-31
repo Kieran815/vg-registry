@@ -6,6 +6,9 @@ import { RouterModule } from '@angular/router';
 // ROUTERS
 import { AppRoutingModule } from './app-routing.module';
 
+// SERVICES
+import { ListService } from './services/list.service';
+
 // SEARCH API IMPORTS
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -82,7 +85,7 @@ import { ListCreationComponent } from './list-module/list-creation/list-creation
       },
     ])
   ],
-  providers: [],
+  providers: [ListService], // Add Services to Provider
   bootstrap: [AppComponent]
 })
 export class AppModule { }
