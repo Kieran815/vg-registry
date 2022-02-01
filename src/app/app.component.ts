@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
     if (this.isLoggedIn) {
       const user = this.tokenStorageService.getUser();
       this.username = user.username;
-      console.log(this.username);
+      console.log(`User Name: ${this.username}`);
     }
   }
 

@@ -2,11 +2,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-// ROUTERS
-import { AppRoutingModule } from './app-routing.module';
-
 // SERVICES
 import { ListService } from './_services/list.service';
+
+// ROUTERS
+import { AppRoutingModule } from './app-routing.module';
 
 // SEARCH API IMPORTS
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -34,6 +34,7 @@ import { ListCreationComponent } from './list-module/list-creation/list-creation
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
+// Router Guards
 
 import  { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { HomeComponent } from './home/home.component';
@@ -60,6 +61,7 @@ import { HomeComponent } from './home/home.component';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule, // search
+    
     // MATERIAL API
     MatCardModule,
     MatInputModule,

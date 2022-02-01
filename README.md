@@ -197,8 +197,10 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 **Portfolio** - <a href="kmilligan.info" target="_blank" rel="noopener noreferrer">kmilligan.info</a><br/>
 **Twitter** - [@twitter_handle](https://twitter.com/twitter_handle)
 
-Project Link: [https://github.com/Kieran815/vg-registry](https://github.com/Kieran815/vg-registry)
-
+Project Links:
+<br/>
+[Kieran815/vg-registry](https://github.com/Kieran815/vg-registry)<br/>
+[Kieran815/vg-backend](https://github.com/Kieran815/vg-backend)
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 

@@ -11,20 +11,7 @@ import { TokenStorageService } from './token-storage.service';
 
 export class ListService {
 
-  constructor(private http: HttpClient, private token: TokenStorageService) { }
-
-  // createProject(url: string) {
-  //   let tokenCheck = this.token.getToken() || "";
-  //   console.log(JSON.parse(tokenCheck).jwt);
-  //   const tokenToken = JSON.parse(tokenCheck).jwt
-  //   console.log(typeof tokenToken);
-  //   const headers = new HttpHeaders()
-  //     .set('Content-Type', 'application/json')
-  //     .append('Authorization', `Bearer ${tokenToken}`);
-  //     console.log(headers);
-  //   return this.http.get<IGameList[]>(url, {headers: headers});
-  // }
-  
+  constructor(private http: HttpClient, private token: TokenStorageService) { }  
   
   findGame(title: string) {
     console.log(`Searching For ${title}`);
@@ -36,7 +23,6 @@ export class ListService {
   getGameLists(): Observable<IGameList[]> {
     console.log("Connecting to IVGR DataBase...");
     return this.http.get<IGameList[]>("http://localhost:9092/api/lists");
-    // return this.createProject("http://localhost:9092/api/lists");
   }
   
   // ***** CREATE NEW LIST *****
