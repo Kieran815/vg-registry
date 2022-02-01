@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 // SERVICES
+import { TokenStorageService } from 'src/app/_services/token-storage.service';
 import { ListService } from 'src/app/_services/list.service';
 
 // ***** MATERIAL DESIGN IMPORTS *****
@@ -14,6 +15,8 @@ import { ListCreationComponent } from '../list-creation/list-creation.component'
   styleUrls: ['./game-list.component.css']
 })
 export class GameListComponent implements OnInit {
+
+  currentUser: any;
   
   // var to receive body from modal list creation
   createListBody: Object | undefined;
@@ -21,7 +24,7 @@ export class GameListComponent implements OnInit {
   // component variables
   gameLists: any | undefined;
 
-  constructor(private listService: ListService, public dialog: MatDialog) {
+  constructor(private token: TokenStorageService, private listService: ListService, public dialog: MatDialog) {
   }
 
   // method for angular list creation pop-up
@@ -56,11 +59,13 @@ export class GameListComponent implements OnInit {
   
   
   ngOnInit(): void {
+    this.currentUser = this.token.getUser();
     this.listService.getGameLists()
       .subscribe(data => {
         this.gameLists = data;
         console.log(this.gameLists);
       });
+
   }
   
 }
