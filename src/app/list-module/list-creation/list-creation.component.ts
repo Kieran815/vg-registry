@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { IGameList } from 'src/app/game-list';
-import { ListService } from 'src/app/services/list.service';
+import { ListService } from 'src/app/_services/list.service';
 
 
 @Component({

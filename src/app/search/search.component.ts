@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ListService } from '../services/list.service';
+import { ListService } from '../_services/list.service';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',

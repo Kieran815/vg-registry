@@ -1,13 +1,12 @@
 // ROOT APP IMPORTS
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
 
 // ROUTERS
 import { AppRoutingModule } from './app-routing.module';
 
 // SERVICES
-import { ListService } from './services/list.service';
+import { ListService } from './_services/list.service';
 
 // SEARCH API IMPORTS
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -26,24 +25,34 @@ import { MatDialogModule } from '@angular/material/dialog';
 // COMPONENT IMPORTS
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
-import { HeaderComponent } from './header/header.component';
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { LandingComponent } from './landing/landing.component';
-import { LoginComponent } from './login/login.component';
 import { GameListComponent } from './list-module/game-list/game-list.component';
 import { ListCreationComponent } from './list-module/list-creation/list-creation.component';
+
+
+// JWT IMPORTS
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { ProfileComponent } from './profile/profile.component';
+
+import  { authInterceptorProviders } from './_helpers/auth.interceptor';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    LoginComponent,
     LandingComponent,
     FourOhFourComponent,
     // SEARCH API
     SearchComponent,
     GameListComponent,
     ListCreationComponent,
+    // JWT IMPORTS
+    LoginComponent,
+    RegisterComponent,
+    ProfileComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,31 +70,8 @@ import { ListCreationComponent } from './list-module/list-creation/list-creation
     MatButtonModule,
     MatIconModule,
     MatDialogModule,
-
-    RouterModule.forRoot([
-      {
-        path: '',
-        component: LandingComponent
-      },
-      {
-        path: 'login',
-        component: LoginComponent
-      },
-      {
-        path: 'search',
-        component: SearchComponent
-      },
-      {
-        path: 'my-lists',
-        component: GameListComponent
-      },
-      {
-        path: '**',
-        component: FourOhFourComponent
-      },
-    ])
   ],
-  providers: [ListService], // Add Services to Provider
+  providers: [ListService, authInterceptorProviders], // Add Services to Provider
   bootstrap: [AppComponent]
 })
 export class AppModule { }

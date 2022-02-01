@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 // SERVICES
-import { ListService } from 'src/app/services/list.service';
+import { ListService } from 'src/app/_services/list.service';
 
 // ***** MATERIAL DESIGN IMPORTS *****
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
