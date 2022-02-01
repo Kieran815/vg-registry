@@ -26,7 +26,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
-import { LandingComponent } from './landing/landing.component';
 import { GameListComponent } from './list-module/game-list/game-list.component';
 import { ListCreationComponent } from './list-module/list-creation/list-creation.component';
 
@@ -42,7 +41,6 @@ import { HomeComponent } from './home/home.component';
 @NgModule({
   declarations: [
     AppComponent,
-    LandingComponent,
     FourOhFourComponent,
     // SEARCH API
     SearchComponent,
