@@ -1,0 +1,26 @@
+<div class="container mt-5">
+  <h2>My Lists</h2>
+
+  <a routerLink="create-list/add/0" class="btn btn-primary mt-3 mb-5">Create List</a>
+
+  <table>
+    <thead>
+      <th>ID</th>
+      <th>
+        Title
+      </th>
+      <th>
+        Description
+      </th>
+      <th></th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let list of gameLists">
+        <td>{{list.id}}</td>
+        <td>{{list.name}}</td>
+        <td>{{list.description}}</td>
+        <td><a routerLink="['editList', list.id]">Edit</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

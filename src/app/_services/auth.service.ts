@@ -36,7 +36,6 @@ export class AuthService {
     const token = window.sessionStorage.getItem('auth-user'); // get token from local storage
     if (token) {
       const authServiceToken = JSON.parse(token).jwt;
-      console.log(authServiceToken);
       const payload = atob(authServiceToken.split('.')[1]); // decode payload of token
       const parsedPayload = JSON.parse(payload); // convert payload into an Object
 

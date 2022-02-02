@@ -1,0 +1,19 @@
+<section class="container mt-5">
+  <h2>{{header}}</h2>
+
+  <form (ngSubmit)="modList(form)" #form="ngForm">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" ngModel name="name" />
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <input type="text" class="form-control" ngModel name="description" />
+    </div>
+
+    <div class="form-group">
+      <button class="btn btn-primary" type="submit">Save List</button>
+    </div>
+  </form>
+</section>

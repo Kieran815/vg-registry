@@ -6,19 +6,19 @@ import { AuthGuard } from './auth.guard';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
-import { ProfileComponent } from './profile/profile.component';
 import { SearchComponent } from './search/search.component';
-import { GameListComponent } from './list-module/game-list/game-list.component';
+import { GameListComponent } from './game-list/game-list.component';
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
+import { ListCreationComponent } from './game-list/list-creation/list-creation.component';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent },
+  { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'search', component: SearchComponent, canActivate: [AuthGuard] },
   { path: 'my-lists', component: GameListComponent, canActivate: [AuthGuard] },
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: "my-lists/create-list/add/:id", component: ListCreationComponent, canActivate: [AuthGuard]},
+  { path: "my-lists/create-list/edit/:id", component: ListCreationComponent, canActivate: [AuthGuard]},
   {path: '**', component: FourOhFourComponent },
 ];
 
