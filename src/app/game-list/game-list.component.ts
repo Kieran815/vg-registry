@@ -19,48 +19,39 @@ export class GameListComponent implements OnInit {
   
   // component variables
   gameLists: any | undefined;
+  currentList: any | undefined;
 
   constructor(private token: TokenStorageService, private listService: ListService) {
   }
 
-  // method for angular list creation pop-up
-  // openDialog() {
-  //   const dialogRef = this.dialog.open(ListCreationComponent);
-  //   let newListName: string;
-  //   let newListDescription: string;
-  //   let nameExists = false;
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     result.data.name ? newListName = result.data.name : '';
-  //     result.data.description ? newListDescription = result.data.description : '';
-  //     if(newListName != undefined && newListDescription != undefined) {
-  //       for(let i = 0; i < this.gameLists.length; i++) {
-  //         if (this.gameLists[i].name === newListName) {
-  //           nameExists = true;
-  //           alert(`List Not Saved. List name "${this.gameLists[i].name}" already exists.`);
-  //         }
-  //       }
-  //       nameExists === false ? this.listService.createList(newListName, newListDescription) : '';
-  //       this.listService.getGameLists;
-  //     } else {
-  //       alert("Missing Information. Please Review your Entry.");
-  //       this.openDialog();
-  //     }
-  //   })
-  // }
-    
-  // deleteList(listId: number) {
-  //   console.log(listId);
-  //   this.listService.deleteList(listId);
-  // }
-  
-  
   ngOnInit(): void {
     this.currentUser = this.token.getUser();
     this.listService.getAllLists()
     .subscribe(data => {
       this.gameLists = data;
-      console.log(this.gameLists);
     });
   }
+
+  deleteList(index: number) {
+    let confirmDelete = confirm(`Are you sure you want to delete ${this.gameLists[index].name}?`);
+    if(confirmDelete) {
+      this.listService.deleteList(this.gameLists[index].id);
+      this.listService.getAllLists().subscribe(data => {
+        return this.gameLists = data;
+      });
+    }
+  }
+
+  getListById(index: number) {
+    console.log(this.gameLists);
+    console.log(this.gameLists[index].id);
+    this.listService.getGamesList(this.gameLists[index].id)
+    // .subscribe(data => {
+    //   this.currentList = data;
+    //   console.log(this.currentList);
+    // });
+  }
+  
+  
   
 }

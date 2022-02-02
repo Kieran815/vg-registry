@@ -3,7 +3,7 @@
 
   <a routerLink="create-list/add/0" class="btn btn-primary mt-3 mb-5">Create List</a>
 
-  <table>
+  <table *ngIf="gameLists">
     <thead>
       <th>ID</th>
       <th>
@@ -15,12 +15,17 @@
       <th></th>
     </thead>
     <tbody>
-      <tr *ngFor="let list of gameLists">
+      <tr *ngFor="let list of gameLists; let i = index">
         <td>{{list.id}}</td>
         <td>{{list.name}}</td>
         <td>{{list.description}}</td>
-        <td><a routerLink="['editList', list.id]">Edit</a></td>
+        <td (click)="getListById(i)"><a >Edit</a></td> <!--  routerLink="['edit', list.id]"-->
+        <td><button (click)="deleteList(i)">X</button></td>
       </tr>
     </tbody>
   </table>
+
+  <section class="card" *ngIf="!gameLists">
+    <p>Please Add a List</p>
+  </section>
 </div>

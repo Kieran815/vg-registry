@@ -1,6 +1,6 @@
 export interface GameList {
-  // listId: number;
+  listId: number;
   listName: string;
   listDescription: string;
-  // gameList: [];
+  gameList: [];
 }
