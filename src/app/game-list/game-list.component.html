@@ -21,6 +21,14 @@
         <td>{{list.description}}</td>
         <td (click)="getListById(i)"><a >Edit</a></td> <!--  routerLink="['edit', list.id]"-->
         <td><button (click)="deleteList(i)">X</button></td>
+        <td>
+          <ul>
+            <li *ngFor="let game of gameLists[i].gameList; let j = index" (click)="getGameFromList(i, j)">
+              {{j}}{{game.name}}
+              <button (click)="deleteGameFromList(gameLists[i].id, game.id)">X</button>
+            </li>
+          </ul>
+        </td>
       </tr>
     </tbody>
   </table>

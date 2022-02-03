@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { GameList } from '../models/gameList.model';
+import { Game } from '../models/game.model';
 
 import { TokenStorageService } from './token-storage.service';
 import { Observable } from 'rxjs';
@@ -20,6 +21,41 @@ export class ListService {
   
   constructor(private http: HttpClient, private token: TokenStorageService) { }
   
+
+// *************** GAME FUNCTIONS ***************
+
+  // ***** ADD GAME TO LIST
+  addGameToList(game: Game, listId: number) {
+    console.log(game);
+    return this.http
+    .post<Game>(`http://localhost:9092/api/lists/${listId}/games`, {
+      api_id: game.id,
+      name: game.name,
+      listId: listId
+    })
+    .subscribe(_ => {
+      return this.getAllLists();
+    })
+  }
+
+  // ***** GET GAME FROM LIST *****
+  getGameFromList(listId: number, gameId: number) {
+    console.log(listId);
+    console.log(gameId);
+    console.log(this.currentGame);
+    this.http.get<Game>(`http://localhost:9092/api/lists/${listId}/games/${gameId}`)
+  }
+
+  // ***** GET GAME FROM GAME LIST *****
+
+  // ***** DELETE GAME FROM LIST *****
+  deleteGameFromList(listId: number, gameId: number) {
+    console.log(`Service: List ID: ${listId}, Game ID: ${gameId}`);
+    this.http.delete(`${this.listUrl}/${listId}/games/${gameId}`, {responseType: 'text'})
+    .subscribe(_ => {
+      return this.getAllLists();
+    });
+  }
   
 // *************** LIST FUNCTIONS ***************
   // ***** GET ALL LISTS *****

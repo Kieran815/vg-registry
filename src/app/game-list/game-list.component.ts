@@ -52,6 +52,18 @@ export class GameListComponent implements OnInit {
     // });
   }
   
+
+  getGameFromList(index: number, gameId: number) {
+
+    this.listService.getGamesList(this.gameLists[index].id)
+    // this.listService.getGameFromList(listId, gameId);
+  }
+
+  deleteGameFromList(listId: number, gameIndex:number) {
+    console.log(listId);
+    this.listService.deleteGameFromList(listId, gameIndex);
+    this.listService.getAllLists();
+  }
   
   
 }

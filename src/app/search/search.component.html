@@ -10,7 +10,7 @@
   <div *ngFor="let game of titleSearchResults.results; let i = index">
     {{i}}: 
     <div>
-      <h2>{{game.name}}</h2>
+      <h2 (click)="selectGame(i)">{{game.name}}</h2>
       <h3 *ngIf="game.esrb_rating != undefined">{{game.esrb_rating.name}}</h3>
       <h3>{{game.genre}}</h3>
       <h3 *ngIf="game.genres.length > 0">
