@@ -19,7 +19,6 @@ export class GameListComponent implements OnInit {
   
   // component variables
   gameLists: any | undefined;
-  currentList: any | undefined;
 
   constructor(private token: TokenStorageService, private listService: ListService) {
   }
@@ -43,19 +42,16 @@ export class GameListComponent implements OnInit {
   }
 
   getListById(index: number) {
-    console.log(this.gameLists);
-    console.log(this.gameLists[index].id);
-    this.listService.getGamesList(this.gameLists[index].id)
-    // .subscribe(data => {
-    //   this.currentList = data;
-    //   console.log(this.currentList);
-    // });
+    console.log(this.gameLists[index]);
+    let fetchedList = this.listService.getGamesList(this.gameLists[index].id);
+    console.log(fetchedList);
   }
   
 
   getGameFromList(index: number, gameId: number) {
 
-    this.listService.getGamesList(this.gameLists[index].id)
+    let listedGames = this.listService.getGamesList(this.gameLists[index].games);
+    console.log(listedGames);
     // this.listService.getGameFromList(listId, gameId);
   }
 

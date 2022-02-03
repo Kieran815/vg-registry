@@ -1,3 +1,33 @@
+<!-- NGX MODAL -->
+<!-- <button type="button" class="btn btn-primary" (click)="openModal(template)">Add to List</button> -->
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Select a List to add this game to.</h4>
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <div class="form-group">
+          <label for="addToList">Select a List:</label>
+          <select formControlName="addToList" class="form-control">
+              <option disabled>Select List</option>
+              <option *ngFor="let list of gameLists; let i = index" value="{{list.id}}">{{list.name}}</option>
+          </select>
+          <!-- <div *ngIf="f.addToList.touched && f.addToList.invalid" class="alert alert-danger">
+              <div *ngIf="f.addToList.errors.required">Name is required.</div>
+          </div> -->
+      </div>
+      <button class="btn btn-primary" type="submit" (click)="modalRef?.hide()">Add to List</button>
+  </form>
+  </div>
+  <!-- <button type="button" class="btn btn-primary" aria-label="Close" (click)="modalRef?.hide()">
+    <span aria-hidden="true"></span>
+  </button> -->
+</ng-template>  
+
+<!-- GAME SEARCH COMPONENT -->
 <section>
   <h2>Search Games</h2>
   <input [(ngModel)]="gameTitleSearch" type="text" placeholder="Search Game Title"/>
@@ -10,7 +40,7 @@
   <div *ngFor="let game of titleSearchResults.results; let i = index">
     {{i}}: 
     <div>
-      <h2 (click)="selectGame(i)">{{game.name}}</h2>
+      <h2>{{game.name}}</h2>
       <h3 *ngIf="game.esrb_rating != undefined">{{game.esrb_rating.name}}</h3>
       <h3>{{game.genre}}</h3>
       <h3 *ngIf="game.genres.length > 0">
@@ -21,5 +51,6 @@
       </h3>
       <img mat-card-xl-image src={{game.background_image}} />
       </div>
+      <button type="button" class="btn btn-primary" (click)="selectGame(i)" (click)="openModal(template)">Add to List</button>
   </div>
 </section>

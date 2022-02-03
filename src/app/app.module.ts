@@ -12,12 +12,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+// NGX Bootstrap
+import { ModalModule } from 'ngx-bootstrap/modal';
+
 // COMPONENT IMPORTS
 import { AppComponent } from './app.component';
-import { SearchComponent } from './search/search.component';
+import { HomeComponent } from './home/home.component';
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
+import { SearchComponent } from './search/search.component';
 import { GameListComponent } from './game-list/game-list.component';
 import { ListCreationComponent } from './game-list/list-creation/list-creation.component';
+
+// Boostrap Imports
 
 
 // JWT IMPORTS
@@ -26,7 +32,6 @@ import { RegisterComponent } from './register/register.component';
 // Router Guards
 
 import  { authInterceptorProviders } from './_helpers/auth.interceptor';
-import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +53,7 @@ import { HomeComponent } from './home/home.component';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule, // search
+    ModalModule.forRoot(),
   ],
   providers: [ListService, authInterceptorProviders], // Add Services to Provider
   bootstrap: [AppComponent]

@@ -17,6 +17,7 @@ export class ListService {
   // gameUrl: string = `http://localhost:9092/api/lists/${listId}/games/${gameId}`;
   
   gameLists: any | undefined;
+  currentGameList: any;
   currentGame: any;
   
   constructor(private http: HttpClient, private token: TokenStorageService) { }
@@ -25,7 +26,12 @@ export class ListService {
 // *************** GAME FUNCTIONS ***************
 
   // ***** ADD GAME TO LIST
-  addGameToList(game: Game, listId: number) {
+  addGameToList(listId: number, game = {
+    id: 0,
+    api_id: this.currentGame.id,
+    name: this.currentGame.name,
+    listId: this.currentGameList
+  }) {
     console.log(game);
     return this.http
     .post<Game>(`http://localhost:9092/api/lists/${listId}/games`, {
@@ -81,6 +87,7 @@ export class ListService {
   getGamesList(id: number) { //id: number
     console.log(`Getting GameList ${id}`)
     console.log(this.gameLists);
+    this.http.get(`${this.listUrl}/${id}`);
     // return this.gameLists.find(x => {
     //   x.id === id;
     // })
@@ -100,7 +107,7 @@ export class ListService {
 // *************** SEARCH FUNCTIONS ***************
   // ***** FIND GAME BY TITLE *****
   findGame(title: string) {
-    console.log(`Searching For ${title}`);
+    // console.log(`Searching For ${title}`);
     return this.http
       .get(this.rawgUrl + `&search=${title}`)
   }
