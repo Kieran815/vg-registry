@@ -14,7 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 // NGX Bootstrap
 import { ModalModule } from 'ngx-bootstrap/modal';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AccordionModule } from 'ngx-bootstrap/accordion';
 // COMPONENT IMPORTS
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -53,6 +54,9 @@ import  { authInterceptorProviders } from './_helpers/auth.interceptor';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule, // search
+    // NGX IMPORTS
+    BrowserAnimationsModule,
+    AccordionModule,
     ModalModule.forRoot(),
   ],
   providers: [ListService, authInterceptorProviders], // Add Services to Provider

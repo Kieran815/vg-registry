@@ -12,9 +12,9 @@ import { Observable } from 'rxjs';
 
 export class ListService {
 
-  rawgUrl: string = 'https://api.rawg.io/api/games?key=aa7e732482ae43419435e2e3e6a960a7'
+  rawgKey: string = `?key=aa7e732482ae43419435e2e3e6a960a7`
+  rawgUrl: string = `https://api.rawg.io/api/games`
   listUrl: string = 'http://localhost:9092/api/lists';
-  // gameUrl: string = `http://localhost:9092/api/lists/${listId}/games/${gameId}`;
   
   gameLists: any | undefined;
   currentGameList: any;
@@ -44,16 +44,6 @@ export class ListService {
     })
   }
 
-  // ***** GET GAME FROM LIST *****
-  getGameFromList(listId: number, gameId: number) {
-    console.log(listId);
-    console.log(gameId);
-    console.log(this.currentGame);
-    this.http.get<Game>(`http://localhost:9092/api/lists/${listId}/games/${gameId}`)
-  }
-
-  // ***** GET GAME FROM GAME LIST *****
-
   // ***** DELETE GAME FROM LIST *****
   deleteGameFromList(listId: number, gameId: number) {
     console.log(`Service: List ID: ${listId}, Game ID: ${gameId}`);
@@ -82,16 +72,6 @@ export class ListService {
       return this.getAllLists();
     })
   }
-  
-  // ***** UPDATE LIST *****
-  getGamesList(id: number) { //id: number
-    console.log(`Getting GameList ${id}`)
-    console.log(this.gameLists);
-    this.http.get(`${this.listUrl}/${id}`);
-    // return this.gameLists.find(x => {
-    //   x.id === id;
-    // })
-  }
 
 
 
@@ -109,9 +89,14 @@ export class ListService {
   findGame(title: string) {
     // console.log(`Searching For ${title}`);
     return this.http
-      .get(this.rawgUrl + `&search=${title}`)
+      .get(`${this.rawgUrl}${this.rawgKey}&search=${title}`)
   }
 
+  // ***** GET GAME FROM LIST *****
+  findGameByKey(keyId: number){
+    return this.http
+      .get(`${this.rawgUrl}/${keyId}${this.rawgKey}`)
+  }
 }
 
 

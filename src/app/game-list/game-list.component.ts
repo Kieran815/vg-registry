@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 
 // SERVICES
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
 import { ListService } from 'src/app/_services/list.service';
 
-import { GameList } from 'src/app/models/gameList.model';
+// NGX BOOTSTRAP
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 // ***** COMPONENT IMPORT *****
 import { ListCreationComponent } from './list-creation/list-creation.component';
@@ -17,10 +18,26 @@ export class GameListComponent implements OnInit {
 
   currentUser: any;
   
+  // NGX
+  open: boolean = true;
+  disabled: boolean = true;
+  modalRef?: BsModalRef;
+
   // component variables
   gameLists: any | undefined;
+  selectedGame: any;
 
-  constructor(private token: TokenStorageService, private listService: ListService) {
+  constructor(private token: TokenStorageService, private listService: ListService, private modalService: BsModalService) {
+  }
+
+  // NGX Accordion
+  log(isOpened: boolean){
+    console.log(isOpened);
+  }
+
+  // NGX Modal
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
   }
 
   ngOnInit(): void {
@@ -29,36 +46,40 @@ export class GameListComponent implements OnInit {
     .subscribe(data => {
       this.gameLists = data;
     });
+
   }
 
   deleteList(index: number) {
     let confirmDelete = confirm(`Are you sure you want to delete ${this.gameLists[index].name}?`);
     if(confirmDelete) {
       this.listService.deleteList(this.gameLists[index].id);
-      this.listService.getAllLists().subscribe(data => {
+      this.listService.getAllLists()
+      .subscribe(data => {
         return this.gameLists = data;
       });
     }
+  }  
+
+  getGameData(apiId: number) {
+    console.log(`Getting Game data from list...`)
+    this.listService.findGameByKey(apiId)
+      .subscribe(data => {
+        this.selectedGame = data;
+        this.logGame();
+      })
   }
 
-  getListById(index: number) {
-    console.log(this.gameLists[index]);
-    let fetchedList = this.listService.getGamesList(this.gameLists[index].id);
-    console.log(fetchedList);
-  }
-  
-
-  getGameFromList(index: number, gameId: number) {
-
-    let listedGames = this.listService.getGamesList(this.gameLists[index].games);
-    console.log(listedGames);
-    // this.listService.getGameFromList(listId, gameId);
+  logGame() {
+    console.log(this.selectedGame)
   }
 
   deleteGameFromList(listId: number, gameIndex:number) {
     console.log(listId);
     this.listService.deleteGameFromList(listId, gameIndex);
-    this.listService.getAllLists();
+    this.listService.getAllLists()
+      .subscribe(data => {
+        return this.gameLists = data;
+      });
   }
   
   

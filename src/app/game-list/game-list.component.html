@@ -1,37 +1,80 @@
-<div class="container mt-5">
-  <h2>My Lists</h2>
+<ng-template #template>
+  <div class="modal-header">
+    <h2 class="modal-title"><b>{{selectedGame.name}}</b></h2>
 
-  <a routerLink="create-list/add/0" class="btn btn-primary mt-3 mb-5">Create List</a>
+    <!-- <div class="card">
+      <img src={{selectedGame.background_image}} class="card-img-top" alt="...">
+      <div class="card-body">
+        <div id="title-div">
+          <h2 class="card-title">{{selectedGame.name}}</h2>
+        </div>
+        <h4 class="card-subtitle mb-2 text-muted" *ngIf="selectedGame.esrb_rating != undefined">
+          <b>Rating: </b>
+          {{selectedGame.esrb_rating.name}}
+        </h4>
+        <h4 class="card-subtitle mb-2 text-muted"  *ngIf="selectedGame.genres.length > 0">
+          <b>Genres: </b>
+          <span *ngFor="let genre of selectedGame.genres">
+            {{genre.name}}
+          </span>
+        </h4>
+        <h4 class="card-subtitle mb-2 text-muted">
+          <b>Released:</b>
+          {{selectedGame.released}}
+        </h4>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+    </div> -->
 
-  <table *ngIf="gameLists">
-    <thead>
-      <th>ID</th>
-      <th>
-        Title
-      </th>
-      <th>
-        Description
-      </th>
-      <th></th>
-    </thead>
-    <tbody>
-      <tr *ngFor="let list of gameLists; let i = index">
-        <td>{{list.id}}</td>
-        <td>{{list.name}}</td>
-        <td>{{list.description}}</td>
-        <td (click)="getListById(i)"><a >Edit</a></td> <!--  routerLink="['edit', list.id]"-->
-        <td><button (click)="deleteList(i)">X</button></td>
-        <td>
-          <ul>
-            <li *ngFor="let game of gameLists[i].gameList; let j = index" (click)="getGameFromList(i, j)">
-              {{j}}{{game.name}}
-              <button (click)="deleteGameFromList(gameLists[i].id, game.id)">X</button>
-            </li>
-          </ul>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="card">
+      <img src={{selectedGame.background_image}} class="card-img-top" alt="...">
+      <div class="card-body">
+        <h4 class="card-subtitle mb-2 text-muted" *ngIf="selectedGame.esrb_rating != undefined">
+          <b>Rating: </b>
+          {{selectedGame.esrb_rating.name}}
+        </h4>
+        <h4 class="card-subtitle mb-2 text-muted"  *ngIf="selectedGame.genres.length > 0">
+          <b>Genres: </b>
+          <span *ngFor="let genre of selectedGame.genres">
+            {{genre.name}}
+          </span>
+        </h4>
+        <h4 class="card-subtitle mb-2 text-muted">
+          <b>Released:</b>
+          {{selectedGame.released}}
+        </h4>
+        <p class="card-text">{{selectedGame.description}}</p>
+      </div>
+    </div>
+  </div>
+</ng-template>  
+
+<div class="card mt-5">
+  <section id="list-page-header">
+    <h2>My Lists</h2>
+    <a routerLink="create-list/add/0" class="btn btn-primary mt-3 mb-5">Create List</a>
+  </section>
+
+  <accordion *ngIf="gameLists" [isAnimated]="true">
+    <accordion-group *ngFor="let list of gameLists; let i = index" heading={{list.name}}>
+      <article class="list-controls">
+        <h3>{{list.description}}</h3>
+        <button class="btn btn-primary" (click)="deleteList(i)">Delete List</button>
+      </article>
+      <ul>
+        <li *ngFor="let game of gameLists[i].gameList; let j = index">
+          <span (click)="getGameData(game.api_id)" (click)="openModal(template)">{{game.name}}</span>
+          <button class="btn btn-primary" (click)="deleteGameFromList(gameLists[i].id, game.id)">X</button>
+        </li>
+      </ul>
+    </accordion-group>
+  </accordion>
 
   <section class="card" *ngIf="!gameLists">
     <p>Please Add a List</p>

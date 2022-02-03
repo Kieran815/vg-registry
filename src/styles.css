@@ -2,10 +2,16 @@
 
 html, body {
   height: 100%;
+  min-height: 100vh;
 }
 
 body {
   background: #18191a;
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+
+}
+
+.btn-primary {
+  background-color: red;
 }

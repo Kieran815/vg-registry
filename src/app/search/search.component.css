@@ -1,3 +1,62 @@
-mat-card {
-  margin: 20px;
+.game-card-deck {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 5px;
+  grid-auto-flow: row;
+}
+#search-box {
+  top: 50px;
+  padding: 50px;
+  background-image: url("../../assets/controller.jpeg");
+  background-size: cover;
+  background-position: fixed;
+  color: white;
+}
+
+#begin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.game-card {
+  max-width: 20vw;
+  margin: 7.5px;
+}
+
+.game-card img {
+  height: 200px;
+}
+
+.card-title {
+  text-align: center;
+  color: black;
+}
+
+.add {
+  float: right;
+  margin-bottom: 0;
+}
+
+#title-div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media screen and (max-width: 900px) {
+  .game-card-deck {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .game-card {
+    max-width: 100%;
+  }
+
+  .game-card img {
+    width: 100%;
+    height: auto;
+  }
 }

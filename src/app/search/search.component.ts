@@ -39,21 +39,25 @@ export class SearchComponent implements OnInit {
   }
   
   submit(){
-    console.log(this.form.value);
+    if(this.form.value.addToList === '') {
+      alert("Please Select a List");
+      return;
+    }
     this.selectedList = this.form.value.addToList;
-    console.log(this.selectedTitle)
-    console.log(typeof this.selectedList);
-    console.log(this.selectedList);
     this.listService.addGameToList(this.form.value.addToList, this.selectedTitle);
   }
 
 
   // ********************************************
   findGame(gameTitle: string) {
+    this.titleSearchResults = '';
     console.log(`Searching For ${gameTitle}`);
     this.listService.findGame(gameTitle)
       .subscribe((response) => {
         this.titleSearchResults = response;
+        if (this.titleSearchResults.count > 20) {
+          this.titleSearchResults.count = 20;
+        }
         console.log(this.titleSearchResults)
       });
   }

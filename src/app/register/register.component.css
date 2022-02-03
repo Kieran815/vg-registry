@@ -1,0 +1,14 @@
+#register {
+  margin-top: 100px;
+}
+
+#form {
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#form h2 {
+  text-align: center;
+}

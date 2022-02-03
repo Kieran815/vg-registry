@@ -1,5 +1,3 @@
-<!-- NGX MODAL -->
-<!-- <button type="button" class="btn btn-primary" (click)="openModal(template)">Add to List</button> -->
 <ng-template #template>
   <div class="modal-header">
     <h4 class="modal-title pull-left">Select a List to add this game to.</h4>
@@ -12,45 +10,57 @@
       <div class="form-group">
           <label for="addToList">Select a List:</label>
           <select formControlName="addToList" class="form-control">
-              <option disabled>Select List</option>
+              <option value="">--Select List--</option>
               <option *ngFor="let list of gameLists; let i = index" value="{{list.id}}">{{list.name}}</option>
           </select>
-          <!-- <div *ngIf="f.addToList.touched && f.addToList.invalid" class="alert alert-danger">
-              <div *ngIf="f.addToList.errors.required">Name is required.</div>
-          </div> -->
       </div>
       <button class="btn btn-primary" type="submit" (click)="modalRef?.hide()">Add to List</button>
   </form>
   </div>
-  <!-- <button type="button" class="btn btn-primary" aria-label="Close" (click)="modalRef?.hide()">
-    <span aria-hidden="true"></span>
-  </button> -->
 </ng-template>  
 
 <!-- GAME SEARCH COMPONENT -->
-<section>
-  <h2>Search Games</h2>
-  <input [(ngModel)]="gameTitleSearch" type="text" placeholder="Search Game Title"/>
-  <input (click)="findGame(gameTitleSearch)" type="submit" value="Search"/>
-  {{gameTitleSearch}}
-</section>
-
-<section  *ngIf="titleSearchResults != undefined">
-  <h3>Found {{titleSearchResults.count}} Results:</h3>
-  <div *ngFor="let game of titleSearchResults.results; let i = index">
-    {{i}}: 
-    <div>
-      <h2>{{game.name}}</h2>
-      <h3 *ngIf="game.esrb_rating != undefined">{{game.esrb_rating.name}}</h3>
-      <h3>{{game.genre}}</h3>
-      <h3 *ngIf="game.genres.length > 0">
-        <b>Genres: </b>
-        <span *ngFor="let genre of game.genres">
-          {{genre.name}}
-        </span>
-      </h3>
-      <img mat-card-xl-image src={{game.background_image}} />
-      </div>
-      <button type="button" class="btn btn-primary" (click)="selectGame(i)" (click)="openModal(template)">Add to List</button>
+<div  class="card col-md-12" id="search-box">
+  <div>
+    <h2>Search Games</h2>
+    <div id="search-form" align="end">
+      <input [(ngModel)]="gameTitleSearch" type="text" placeholder="Search Game Title"/>
+      <input class="btn btn-primary" (click)="findGame(gameTitleSearch)" type="submit" value="Search"/>
+    </div>
   </div>
-</section>
+
+  <div *ngIf="titleSearchResults === undefined" id="begin">
+    <h2>Begin Your Quest</h2>
+    <p>Enter a Game Title in the Search Bar to Proceed.</p>
+  </div>
+
+  <div *ngIf="titleSearchResults != undefined" class="card-container">
+    <h3>Found {{titleSearchResults.count}} Results For "{{gameTitleSearch}}"</h3>
+    <section class=" game-card-deck">
+      <div class="card game-card" *ngFor="let game of titleSearchResults.results; let i = index">
+        <img src={{game.background_image}} class="card-img-top" alt="...">
+        <div class="card-body">
+          <div id="title-div">
+            <h2 class="card-title">{{game.name}}</h2>
+            <button class="btn btn-primary add" (click)="selectGame(i)" (click)="openModal(template)">Add to List</button>
+          </div>
+          <h4 class="card-subtitle mb-2 text-muted" *ngIf="game.esrb_rating != undefined">
+            <b>Rating: </b>
+            {{game.esrb_rating.name}}
+          </h4>
+          <h4 class="card-subtitle mb-2 text-muted"  *ngIf="game.genres.length > 0">
+            <b>Genres: </b>
+            <span *ngFor="let genre of game.genres">
+              {{genre.name}}
+            </span>
+          </h4>
+          <h4 class="card-subtitle mb-2 text-muted">
+            <b>Released:</b>
+            {{game.released}}
+          </h4>
+          <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
