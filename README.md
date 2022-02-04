@@ -56,6 +56,11 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
+  ```
+    "This is not crap."
+    - Usman Bashir
+  ```
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
@@ -92,7 +97,7 @@
 
 #### Resources
 ![Google](https://img.shields.io/badge/google-4285F4?style=for-the-badge&logo=google&logoColor=white)
-![YouTube](https://img.shields.io/badge/<handle>-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white)
+![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white)
 ![MDN Web Docs](https://img.shields.io/badge/MDN_Web_Docs-black?style=for-the-badge&logo=mdnwebdocs&logoColor=white)
 ![Dev.to blog](https://img.shields.io/badge/dev.to-0A0A0A?style=for-the-badge&logo=dev.to&logoColor=white)
 ![Medium](https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white)
@@ -189,17 +194,6 @@ Don't forget to give the project a star! Thanks again!
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
-
-<!-- LICENSE -->
-## License
-
-Distributed under the MIT License.
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
 <!-- CONTACT -->
 ## Contact
 
@@ -213,6 +207,14 @@ Project Links:
 [Kieran815/vg-backend](https://github.com/Kieran815/vg-backend)
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+Helpful Resources:
+[RAWG API Docs](https://api.rawg.io/docs/#tag/games)
+[Angular Docs](https://angular.io/)
+[Angular Material 9|8|7 Add Dialog Modal and Pass Data between Parent Component Tutorial by Example](https://www.freakyjolly.com/angular-material-dialog-modal-pass-data-between-parent-component-tutorial/)
+[Angular Authentication With JSON Web Tokens (JWT): The Complete Guide](https://blog.angular-university.io/angular-jwt-authentication/)
+[Angular Authentication: Using Route Guards](https://medium.com/@ryanchenkie_40935/angular-authentication-using-route-guards-bf7a4ca13ae3)
+[Angular Route Guards for Authentication](https://levelup.gitconnected.com/angular-route-guards-for-authentication-d77fb01f04ae)
+[ngx-bootstrap docs](https://valor-software.com/ngx-bootstrap/#/)
 
 
 <!-- ACKNOWLEDGMENTS -->
