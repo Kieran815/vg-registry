@@ -1,0 +1,18 @@
+#four-oh-four {
+  margin-top: 100px;
+  padding: 30px;
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.45), 
+    rgba(0, 0, 0, 0.45)
+  ),url(../../assets/game-over.jpg) center;
+  color: white;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+button {
+  margin: 7px;
+}
