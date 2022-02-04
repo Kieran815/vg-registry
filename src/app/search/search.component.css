@@ -4,25 +4,22 @@
   grid-gap: 5px;
   grid-auto-flow: row;
 }
-#search-box {
-  top: 50px;
-  padding: 50px;
-  background-image: url("../../assets/controller.jpeg");
-  background-size: cover;
-  background-position: fixed;
-  color: white;
-}
 
-#begin {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 20px;
+.card-subtitle {
+  color: #252729;
 }
 
 .game-card {
   max-width: 20vw;
   margin: 7.5px;
+}
+
+.gameCardBody {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
 .game-card img {
@@ -34,15 +31,48 @@
   color: black;
 }
 
-.add {
-  float: right;
-  margin-bottom: 0;
+.button-container {
+  display: flex;
+  justify-content: center;
 }
 
-#title-div {
+#search-bar {
+  background: rgba(255,255,255,0.7);
+  line-height: 250%;
+  border: none;
+  border-radius: 10px 0 0 10px;
+}
+
+#search-box {
+  top: 50px;
+  padding: 50px;
+  min-height: 50vh;
+  background-image: url("../../assets/Link.jpg");
+  background-size: cover;
+  background-position: fixed;
+  color: white;
+}
+
+#search-box:focus {
+  border: none;
+}
+
+.search-form {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+}
+
+#begin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.5em;
+  padding-top: 20px;
+  background: rgba(0,0,0,0.5)
+}
+
+#begin h2 {
+  font-size: 1.5em;
 }
 
 @media screen and (max-width: 900px) {
@@ -50,11 +80,11 @@
     display: flex;
     flex-direction: column;
   }
-
+  
   .game-card {
     max-width: 100%;
   }
-
+  
   .game-card img {
     width: 100%;
     height: auto;

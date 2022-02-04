@@ -24,41 +24,44 @@
   <div>
     <h2>Search Games</h2>
     <div id="search-form" align="end">
-      <input [(ngModel)]="gameTitleSearch" type="text" placeholder="Search Game Title"/>
-      <input class="btn btn-primary" (click)="findGame(gameTitleSearch)" type="submit" value="Search"/>
+      <input id="search-bar" [(ngModel)]="gameTitleSearch" type="text" placeholder="   Search Game Title"/>
+      <input class="btn btn-success" (click)="findGame(gameTitleSearch)" type="submit" value="Search"/>
     </div>
   </div>
 
   <div *ngIf="titleSearchResults === undefined" id="begin">
-    <h2>Begin Your Quest</h2>
-    <p>Enter a Game Title in the Search Bar to Proceed.</p>
+    <h2><b>Begin Your Quest</b></h2>
+    <p><b>Enter a Game Title in the Search Bar to Proceed.</b></p>
   </div>
 
   <div *ngIf="titleSearchResults != undefined" class="card-container">
     <h3>Found {{titleSearchResults.count}} Results For "{{gameTitleSearch}}"</h3>
     <section class=" game-card-deck">
       <div class="card game-card" *ngFor="let game of titleSearchResults.results; let i = index">
-        <img src={{game.background_image}} class="card-img-top" alt="...">
-        <div class="card-body">
-          <div id="title-div">
+        <div class="gameCardBody" style="background: linear-gradient(transparent, white), url({{game.background_image}}) center;">
+          <img src={{game.background_image}} class="card-img-top" alt="...">
+          <div class="card-body">
             <h2 class="card-title">{{game.name}}</h2>
-            <button class="btn btn-primary add" (click)="selectGame(i)" (click)="openModal(template)">Add to List</button>
+            <h4 class="card-subtitle mb-2 text-muted" *ngIf="game.esrb_rating != undefined">
+              <b>Rating: </b>
+              {{game.esrb_rating.name}}
+            </h4>
+            <h4 class="card-subtitle mb-2 text-muted"  *ngIf="game.genres.length > 0">
+              <b>Genres: </b>
+              <span *ngFor="let genre of game.genres">
+                {{genre.name}}
+              </span>
+            </h4>
+            <h4 class="card-subtitle mb-2 text-muted">
+              <b>Released:</b>
+              {{game.released}}
+            </h4>
+            <div class="button-container">
+              <button class="btn btn-success add" (click)="selectGame(i)" (click)="openModal(template)">
+                Add to List
+              </button>
+            </div>
           </div>
-          <h4 class="card-subtitle mb-2 text-muted" *ngIf="game.esrb_rating != undefined">
-            <b>Rating: </b>
-            {{game.esrb_rating.name}}
-          </h4>
-          <h4 class="card-subtitle mb-2 text-muted"  *ngIf="game.genres.length > 0">
-            <b>Genres: </b>
-            <span *ngFor="let genre of game.genres">
-              {{genre.name}}
-            </span>
-          </h4>
-          <h4 class="card-subtitle mb-2 text-muted">
-            <b>Released:</b>
-            {{game.released}}
-          </h4>
-          <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
         </div>
       </div>
     </section>

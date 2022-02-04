@@ -1,0 +1,19 @@
+h1 {
+  text-align: center;
+  font-size: 3em;
+  padding: 20px;
+}
+
+#home {
+  margin-top: 25px;
+}
+
+#opening-credits {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.carousel-caption {
+  background: rgba(0,0,0, 0.6)
+}

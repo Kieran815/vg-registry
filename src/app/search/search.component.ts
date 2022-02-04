@@ -4,9 +4,7 @@ import { ListService } from '../_services/list.service';
 
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
-
-import { Game } from '../models/game.model';
-
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-search',
@@ -33,11 +31,9 @@ export class SearchComponent implements OnInit {
   form = new FormGroup({
     addToList: new FormControl('', Validators.required)
   });
-
   get f(){
     return this.form.controls;
   }
-  
   submit(){
     if(this.form.value.addToList === '') {
       alert("Please Select a List");
@@ -46,6 +42,15 @@ export class SearchComponent implements OnInit {
     this.selectedList = this.form.value.addToList;
     this.listService.addGameToList(this.form.value.addToList, this.selectedTitle);
   }
+
+  // submit(form: NgForm) {
+  //   if(this.form.value.addToList === '') {
+  //     alert("Please Select a List");
+  //     return;
+  //   }
+  //   this.selectedList = this.form.value.addToList;
+  //   this.listService.addGameToList(this.form.value.addToList, this.selectedTitle);
+  // }
 
 
   // ********************************************

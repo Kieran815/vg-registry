@@ -4,18 +4,16 @@ import { BrowserModule } from '@angular/platform-browser';
 
 // SERVICES
 import { ListService } from './_services/list.service';
-
 // ROUTERS
 import { AppRoutingModule } from './app-routing.module';
-
 // SEARCH API IMPORTS
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
 // NGX Bootstrap
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 // COMPONENT IMPORTS
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -23,15 +21,10 @@ import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { SearchComponent } from './search/search.component';
 import { GameListComponent } from './game-list/game-list.component';
 import { ListCreationComponent } from './game-list/list-creation/list-creation.component';
-
-// Boostrap Imports
-
-
 // JWT IMPORTS
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 // Router Guards
-
 import  { authInterceptorProviders } from './_helpers/auth.interceptor';
 
 @NgModule({
@@ -57,6 +50,7 @@ import  { authInterceptorProviders } from './_helpers/auth.interceptor';
     // NGX IMPORTS
     BrowserAnimationsModule,
     AccordionModule,
+    CarouselModule,
     ModalModule.forRoot(),
   ],
   providers: [ListService, authInterceptorProviders], // Add Services to Provider

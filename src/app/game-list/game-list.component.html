@@ -1,82 +1,80 @@
 <ng-template #template>
-  <div class="modal-header">
-    <h2 class="modal-title"><b>{{selectedGame.name}}</b></h2>
-
-    <!-- <div class="card">
-      <img src={{selectedGame.background_image}} class="card-img-top" alt="...">
-      <div class="card-body">
-        <div id="title-div">
-          <h2 class="card-title">{{selectedGame.name}}</h2>
+  <div class="gameList-card" style="background: linear-gradient(black, transparent), url({{selectedGame.background_image}});">
+    <div class="modal-header card-header">
+      <h2 class="modal-title">{{selectedGame.name}}</h2>
+      <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+        <span aria-hidden="true" class="visually-hidden">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="card">
+        <img src={{selectedGame.background_image}} class="card-img-top" alt="Image from {{selectedGame.name}}">
+        <div class="card-body">
+          <h4 class="card-subtitle mb-2 text-muted" *ngIf="selectedGame.esrb_rating != undefined">
+            <b>Rating: </b>
+            {{selectedGame.esrb_rating.name}}
+          </h4>
+          <h4 class="card-subtitle mb-2 text-muted"  *ngIf="selectedGame.genres.length > 0">
+            <b>Genres: </b>
+            <div>
+              <span *ngFor="let genre of selectedGame.genres">
+                {{genre.name}}
+              </span>
+            </div>
+          </h4>
+          <h4 class="card-subtitle mb-2 text-muted"  *ngIf="selectedGame.parent_platforms.length > 0">
+            <b>Platforms: </b>
+            <div>
+              <span *ngFor="let platform of selectedGame.parent_platforms; let i = index">
+                {{platform.platform.name}}
+              </span>
+            </div>
+          </h4>
+          <h4 class="card-subtitle mb-2 text-muted">
+            <b>Play Time: </b>
+            {{selectedGame.playtime}} Hours
+          </h4>
+          <h4 class="card-subtitle mb-2 text-muted"  *ngIf="selectedGame.publishers.length > 0">
+            <b>Publisher: </b>
+            <div>
+              <span *ngFor="let publisher of selectedGame.publishers; let i = index">
+                {{publisher.name}}
+              </span>
+            </div>
+          </h4>
+          <h4 class="card-subtitle mb-2 text-muted">
+            <b>Released:</b>
+            {{selectedGame.released}}
+          </h4>
+          <p class="card-text">{{selectedGame.description_raw}}</p>
         </div>
-        <h4 class="card-subtitle mb-2 text-muted" *ngIf="selectedGame.esrb_rating != undefined">
-          <b>Rating: </b>
-          {{selectedGame.esrb_rating.name}}
-        </h4>
-        <h4 class="card-subtitle mb-2 text-muted"  *ngIf="selectedGame.genres.length > 0">
-          <b>Genres: </b>
-          <span *ngFor="let genre of selectedGame.genres">
-            {{genre.name}}
-          </span>
-        </h4>
-        <h4 class="card-subtitle mb-2 text-muted">
-          <b>Released:</b>
-          {{selectedGame.released}}
-        </h4>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      </div>
-    </div> -->
-
-
-    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
-      <span aria-hidden="true" class="visually-hidden">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <div class="card">
-      <img src={{selectedGame.background_image}} class="card-img-top" alt="...">
-      <div class="card-body">
-        <h4 class="card-subtitle mb-2 text-muted" *ngIf="selectedGame.esrb_rating != undefined">
-          <b>Rating: </b>
-          {{selectedGame.esrb_rating.name}}
-        </h4>
-        <h4 class="card-subtitle mb-2 text-muted"  *ngIf="selectedGame.genres.length > 0">
-          <b>Genres: </b>
-          <span *ngFor="let genre of selectedGame.genres">
-            {{genre.name}}
-          </span>
-        </h4>
-        <h4 class="card-subtitle mb-2 text-muted">
-          <b>Released:</b>
-          {{selectedGame.released}}
-        </h4>
-        <p class="card-text">{{selectedGame.description}}</p>
       </div>
     </div>
   </div>
 </ng-template>  
 
-<div class="card mt-5">
+<div class="card mt-5" id="listsCard">
   <section id="list-page-header">
     <h2>My Lists</h2>
-    <a routerLink="create-list/add/0" class="btn btn-primary mt-3 mb-5">Create List</a>
+    <a routerLink="create-list/add/0" class="btn btn-success mt-3 mb-5">Create List</a>
   </section>
 
   <accordion *ngIf="gameLists" [isAnimated]="true">
     <accordion-group *ngFor="let list of gameLists; let i = index" heading={{list.name}}>
       <article class="list-controls">
         <h3>{{list.description}}</h3>
-        <button class="btn btn-primary" (click)="deleteList(i)">Delete List</button>
+        <button class="btn btn-danger" (click)="deleteList(i)">Delete List</button>
       </article>
       <ul>
-        <li *ngFor="let game of gameLists[i].gameList; let j = index">
-          <span (click)="getGameData(game.api_id)" (click)="openModal(template)">{{game.name}}</span>
-          <button class="btn btn-primary" (click)="deleteGameFromList(gameLists[i].id, game.id)">X</button>
+        <li class="list-item" *ngFor="let game of gameLists[i].gameList; let j = index">
+          <span class="btn-link" (click)="getGameData(game.api_id)" (click)="openModal(template)">{{game.name}}</span>
+          <button class="btn btn-danger" (click)="deleteGameFromList(gameLists[i].id, game.id)">X</button>
         </li>
       </ul>
     </accordion-group>
   </accordion>
 
-  <section class="card" *ngIf="!gameLists">
+  <section id="noLists" *ngIf="!gameLists">
     <p>Please Add a List</p>
   </section>
 </div>

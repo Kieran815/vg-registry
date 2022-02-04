@@ -1,3 +1,7 @@
+accordion {
+  padding: 5px 10px;
+}
+
 .list-controls {
   display: flex;
   justify-content: space-between;
@@ -9,4 +13,44 @@
   justify-content: space-between;
   align-items: center;
   padding: 30px;
+}
+
+#listsCard {
+  background-image: url("../../assets/cosmic-horror.jpg");
+  background-size: cover;
+  background-position: fixed;
+  min-height: 50vh;
+}
+
+#listsCard h2 {
+  color: white;
+}
+
+#noLists {
+  color: white;
+  padding-left: 100px;
+}
+
+.list-item {
+  border: 1px solid #18191a;
+  border-radius: 5px;
+  padding: 5px 15px;
+  margin: 2px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-header {
+  color: white;
+}
+
+.close {
+  color: white;
+}
+
+.card-subtitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

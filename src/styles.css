@@ -9,9 +9,8 @@ body {
   background: #18191a;
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-
 }
 
-.btn-primary {
-  background-color: red;
+p, a, label {
+  font-size: 125%;
 }

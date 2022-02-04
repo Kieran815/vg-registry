@@ -1,8 +1,15 @@
-#create-list {
+.create-list {
   display: flex;
   flex-direction: column;
+  top: 50px;
+  padding: 50px;
+  min-height: 50vh;
+  background-image: url("../../../assets/Mario.jpg");
+  background-size: cover;
+  background-position: fixed;
+  color: white;
 }
 
-mat-dialog-actions {
-  display: flex;
+input {
+  background: rgba(255,255,255, 0.5)
 }
