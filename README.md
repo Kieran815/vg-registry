@@ -1,24 +1,11 @@
 <div id="top"></div>
 
-Helpful Links:<br />
-
-- [link 1](link1)
-
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
-
-
-<!-- PROJECT LOGO -->
-<br />
-<div align="center">
-  <a href="https://github.com/Kieran815/vg-registry">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
 
 <h2 align="center">International Video Game Registry</h2>
 <h3 align="center">Front End</h3>
@@ -70,10 +57,6 @@ Helpful Links:<br />
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `twitter_handle`, `linkedin_username`, `project_description`
-
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
@@ -81,7 +64,9 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 ### Built With
 
 * [Angular](https://angular.io/)
-* [Bootstrap](https://getbootstrap.com)
+* [Bootstrap](https://valor-software.com/ngx-bootstrap/#/)
+* [Spring Boot](https://spring.io/projects/spring-boot)
+* [RAWG API](https://rawg.io/login?forward=developer)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -89,9 +74,6 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 
 <!-- GETTING STARTED -->
 ## Getting Started
-
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
@@ -103,7 +85,7 @@ This is an example of how to list things you need to use the software and how to
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
+1. Get a free API Key at [RAWG API](https://rawg.io/login?forward=developer)
 2. Clone the repo
    ```sh
    git clone https://github.com/Kieran815/vg-registry.git
@@ -112,9 +94,9 @@ This is an example of how to list things you need to use the software and how to
    ```sh
    npm install
    ```
-4. Enter your API in `config.js`
+4. Enter your API in `app/_services/list.service.ts`
    ```js
-   const API_KEY = 'ENTER YOUR API';
+   rawgKey: string = 'ENTER YOUR API';
    ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -141,23 +123,21 @@ _For more examples, please refer to the [Documentation](https://github.com/Kiera
 
 **User Stories**
 As a User, I should be able to:
-- [ ] log in to my account
-- [ ] get a list of games
-  - [ ] by title
-- [ ] Select a game to view the details
-- [ ] add the selected game to my list
-  - [ ] boolean: have you played before?
-- [ ] View My List
-  - [ ] Delete Game from My List
-  - [ ] Update boolean: have you played before
+- [x] log in to my account
+- [x] get a list of games
+  - [x] by title
+- [x] Select a game to view the details
+- [x] add the selected game to my list
+- [x] View My List
+  - [x] Delete Game from My List
 
 **Stretch Goals**
 - [ ] add a news feed about upcoming games
 
 ### Entity Relationship Diagram
-<!-- <image src= alt="Int'l Video Game Registry Initial Entity Relationship Diagram" /> -->
+<img src="./ivgr-erd.png" alt="Int'l Video Game Registry Initial Entity Relationship Diagram" />
 
-See the [open issues](https://github.com/Kieran815/vg-registry/issues) for a full list of proposed features (and known issues).
+<!-- See the [open issues](https://github.com/Kieran815/vg-registry/issues) for a full list of proposed features (and known issues). -->
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -184,7 +164,7 @@ Don't forget to give the project a star! Thanks again!
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+Distributed under the MIT License.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -195,7 +175,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 **Email** - <a href="mailto: kieran.milligan@gmail.com">kieran.milligan@gmail.com</a><br/>
 **Portfolio** - <a href="kmilligan.info" target="_blank" rel="noopener noreferrer">kmilligan.info</a><br/>
-**Twitter** - [@twitter_handle](https://twitter.com/twitter_handle)
+<!-- **Twitter** - [@twitter_handle](https://twitter.com/twitter_handle) -->
 
 Project Links:
 <br/>
@@ -214,10 +194,6 @@ Project Links:
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/Kieran815/vg-registry.svg?style=for-the-badge
 [contributors-url]: https://github.com/Kieran815/vg-registry/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/Kieran815/vg-registry.svg?style=for-the-badge
